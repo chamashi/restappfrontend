@@ -27,7 +27,7 @@ export default function EditCustomer() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.put(`http://localhost:8080/customer/${id}`, customer);
-    navigate("/");
+    navigate("/home");
   };
 
   const loadCustomer = async () => {
@@ -36,9 +36,36 @@ export default function EditCustomer() {
   };
 
   return (
-    <div className="container">
+    <section>
+      <nav class="navbar navbar-expand-lg " >
+      <Link className="navbar-brand" to="/">
+            Bumble Bee </Link>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+      <Link className="btn btn-dark" to="/addcustomer" style={{marginRight:"10px"}}>
+            Register a Customer
+          </Link>
+      </li>
+      <li class="nav-item">
+      <Link className="btn btn-dark" to="/product/addproduct" style={{marginRight:"10px"}}>
+            Add Product
+          </Link>
+      </li>
+      <li class="nav-item">
+      <Link className="btn btn-dark" to="/" style={{marginRight:"10px"}}>
+            Log out
+          </Link>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div className="container" style={{marginTop:"90px"}}>
       <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
+        <div className="col-md-5 offset-md-3 border rounded p-4 mt-2 shadow">
           <h2 className="text-center m-4">Edit Customer Details</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
@@ -97,12 +124,13 @@ export default function EditCustomer() {
             <button type="submit" className="btn btn-outline-primary">
               Update Customer
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/">
+            <Link className="btn btn-danger mx-2" to="/home">
               Cancel
             </Link>
           </form>
         </div>
       </div>
     </div>
+    </section>
   );
 }

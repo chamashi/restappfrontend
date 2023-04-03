@@ -22,12 +22,39 @@ export default function ProductHome() {
   };
 
   return (
+    <section>
+      <nav class="navbar navbar-expand-lg " >
+      <Link className="navbar-brand" to="/">
+            Bumble Bee </Link>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+      <Link className="btn btn-dark" to="/addcustomer" style={{marginRight:"10px"}}>
+            Customer Registration
+          </Link>
+      </li>
+      <li class="nav-item">
+      <Link className="btn btn-dark" to="/product/addproduct" style={{marginRight:"10px"}}>
+            Add Product
+          </Link>
+      </li>
+      <li class="nav-item">
+      <Link className="btn btn-dark" to="/" style={{marginRight:"10px"}}>
+            Log out
+          </Link>
+      </li>
+    </ul>
+  </div>
+</nav>
     <div className="container">
       <div className="py-4">
-        <table className="table border shadow">
+        <table className="table table-striped table-dark">
           <thead>
             <tr>
-              <th scope="col">S.N</th>
+              <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Brand</th>
               <th scope="col">Country</th>
@@ -53,7 +80,7 @@ export default function ProductHome() {
                     View
                   </Link>
                   <Link
-                    className="btn btn-outline-primary mx-2"
+                    className="btn btn-success mx-2"
                     to={`/product/editproduct/${product.id}`}
                   >
                     Edit
@@ -71,5 +98,6 @@ export default function ProductHome() {
         </table>
       </div>
     </div>
+    </section>
   );
 }

@@ -1,38 +1,40 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+background: url("./css/bglogin.jpg");
+background-size: cover;
+background-position: center;
+height: 100%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.col-md-6  {
+  background-color:#ffcc00;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.col-md-7  {
+  background-color: #ff8c1a;
 }
-
-.App-link {
-  color: #61dafb;
+.col-md-5  {
+  background-color: #ff944d;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2
+{
+color: purple;
+text-decoration-style: bolder;
+}
+.form-label{
+  align-self: left;
+  text-decoration-style: bolder;
+  text-align: left;
+  
+}
+.containerone{
+  width: 750px;
+  height: 600px;
+  margin-left: 400px;
+}
+.navbar {
+  background-color:#ffcc00;
+  text-decoration: bolder;
+}
+.navbar-brand{
+  text-decoration: bolder;
+  margin-left: 20px;
 }
