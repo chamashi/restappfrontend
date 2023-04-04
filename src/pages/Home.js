@@ -55,7 +55,7 @@ export default function Home() {
         <table className="table table-striped table-dark">
           <thead>
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">S.N</th>
               <th scope="col">Name</th>
               <th scope="col">Age</th>
               <th scope="col">Address</th>

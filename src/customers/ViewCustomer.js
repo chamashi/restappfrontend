@@ -56,7 +56,7 @@ export default function ViewCustomer() {
 
           <div className="card">
             <div className="card-header">
-              Details of user id : {customer.id}
+              Details of customer id : {customer.id}
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
                   <b>Name:</b>
