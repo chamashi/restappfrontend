@@ -42,6 +42,11 @@ export default function ProductHome() {
           </Link>
       </li>
       <li class="nav-item">
+      <Link className="btn btn-dark" to="/employee/addemployee" style={{marginRight:"10px"}}>
+            Add Employee
+          </Link>
+      </li>
+      <li class="nav-item">
       <Link className="btn btn-dark" to="/" style={{marginRight:"10px"}}>
             Log out
           </Link>

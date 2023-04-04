@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useEffect,useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-export default function ViewCustomer() {
-  const [customer, setCustomer] = useState({
+export default function ViewEmployee() {
+  const [employee, setEmployee] = useState({
     name: "",
-    age: "",
+    mobile: "",
     address: "",
     email: "",
   });
@@ -13,12 +13,12 @@ export default function ViewCustomer() {
   const { id } = useParams();
 
   useEffect(() => {
-    loadCustomer();
+    loadEmployee();
   }, []);
 
-  const loadCustomer = async () => {
-    const result = await axios.get(`http://localhost:8080/customer/${id}`);
-    setCustomer(result.data);
+  const loadEmployee = async () => {
+    const result = await axios.get(`http://localhost:8080/employee/${id}`);
+    setEmployee(result.data);
   };
 
   return (
@@ -57,33 +57,33 @@ export default function ViewCustomer() {
     <div className="container" style={{marginTop:"70px"}}>
       <div className="row">
         <div className="col-md-7 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Customer Details</h2>
+          <h2 className="text-center m-4">Employee Details</h2>
 
           <div className="card">
             <div className="card-header">
-              Details of customer id : {customer.id}
+              Details of employee id : {employee.id}
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
                   <b>Name:</b>
-                  {customer.name}
+                  {employee.name}
                 </li>
                 <li className="list-group-item">
-                  <b>Age:</b>
-                  {customer.age}
+                  <b>Mobile:</b>
+                  {employee.mobile}
                 </li>
                 <li className="list-group-item">
                   <b>address:</b>
-                  {customer.address}
+                  {employee.address}
                 </li>
                 <li className="list-group-item">
                   <b>Email:</b>
-                  {customer.email}
+                  {employee.email}
                 </li>
               </ul>
             </div>
           </div>
-          <Link className="btn btn-primary my-2" to={"/home"} >
-            Back to Home
+          <Link className="btn btn-primary my-2" to={"/employee"} >
+            Back
           </Link>
         </div>
       </div>

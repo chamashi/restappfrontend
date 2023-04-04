@@ -10,7 +10,11 @@ import ProductHome from "./pages/ProductHome";
 import AddCustomer from "./customers/AddCustomer";
 import EditCustomer from "./customers/EditCustomer";
 import ViewCustomer from "./customers/ViewCustomer";
+import EmployeeHome from "./pages/EmployeeHome";
+import AddEmployee from "./employee/AddEmployee";
+import EditEmployee from "./employee/EditEmployee";
 import Login from "./pages/Login";
+import ViewEmployee from "./employee/ViewEmployee";
 
 function App() {
   return (
@@ -27,6 +31,10 @@ function App() {
           <Route exact path="/product/addproduct" element={<AddProduct />} />
           <Route exact path="/product/editproduct/:id" element={<EditProduct />} />
           <Route exact path="/product/viewproduct/:id" element={<ViewProduct />} />
+          <Route exact path="/employee" element={<EmployeeHome />} />
+          <Route exact path="/employee/addemployee" element={<AddEmployee/>} />
+          <Route exact path="/employee/editemployee/:id" element={<EditEmployee />} />
+          <Route exact path="/employee/viewemployee/:id" element={<ViewEmployee />} />
         </Routes>
       </Router>
     </div>

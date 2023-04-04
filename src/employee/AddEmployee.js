@@ -2,26 +2,26 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function AddProduct() {
+export default function AddEmployee() {
   let navigate = useNavigate();
 
-  const [product, setProduct] = useState({
+  const [employee, setEmployee] = useState({
     name: "",
-    brand: "",
-    country: "",
-    price: "",
+    mobile: "",
+    address: "",
+    email: "",
   });
 
-  const { name, brand, country, price } = product;
+  const { name, mobile, address, email } = employee;
 
   const onInputChange = (e) => {
-    setProduct({ ...product, [e.target.name]: e.target.value });
+    setEmployee({ ...employee, [e.target.name]: e.target.value });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/product", product);
-    navigate("/product");
+    await axios.post("http://localhost:8080/employee", employee);
+    navigate("/employee");
   };
 
   return (
@@ -60,66 +60,65 @@ export default function AddProduct() {
     <div className="container" style={{marginTop:"90px"}}>
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Add Product</h2>
+          <h2 className="text-center m-4">Add Employee</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
-            <div className="mb-4">
+            <div className="mb-3">
               <label htmlFor="Name" className="form-label">
                 Name
               </label>
               <input
                 type={"text"}
                 className="form-control" required
-                placeholder="Enter Product name"
+                placeholder="Enter Employee name"
                 name="name"
                 value={name}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="brand" className="form-label">
-                Brand
+              <label htmlFor="mobile" className="form-label">
+                Mobile
               </label>
               <input
                 type={"text"}
                 className="form-control" required
-                placeholder="Enter product brand"
-                name="brand"
-                value={brand}
+                placeholder="Enter mobile" maxLength={10}
+                name="mobile"
+                value={mobile}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="country" className="form-label">
-                Country
+              <label htmlFor="address" className="form-label">
+                Address
               </label>
               <input
                 type={"text"}
                 className="form-control" required
-                placeholder="Enter country"
-                name="country"
-                value={country}
+                placeholder="Enter address"
+                name="address"
+                value={address}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="price" className="form-label">
-                Price
+              <label htmlFor="Email" className="form-label">
+                E-mail
               </label>
               <input
-                type={"text"}
+                type={"email"}
                 className="form-control" required
-                placeholder="Enter price"
-                name="price"
-                value={price}
+                placeholder="Enter e-mail address"
+                name="email"
+                value={email}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
-            
             <button type="submit" className="btn btn-primary">
-              Submit
+              Add Employee
             </button>
-            <Link className="btn btn-danger mx-2" to="/product">
+            <Link className="btn btn-danger mx-2" to="/employee">
               Cancel
             </Link>
           </form>

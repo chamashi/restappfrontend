@@ -2,31 +2,30 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-
-export default function Home() {
-  const [customers, setCustomers] = useState([]);
+export default function EmployeeHome() {
+  const [employees, setEmployees] = useState([]);
 
   const { id } = useParams();
 
   useEffect(() => {
-    loadCustomers();
+    loadEmployees();
   }, []);
 
-  const loadCustomers = async () => {
-    const result = await axios.get("http://localhost:8080/customers");
-    setCustomers(result.data);
+  const loadEmployees = async () => {
+    const result = await axios.get("http://localhost:8080/employees");
+    setEmployees(result.data);
   };
 
-  const deleteCustomer = async (id) => {
-    await axios.delete(`http://localhost:8080/customer/${id}`);
-    loadCustomers();
+  const deleteEmployee = async (id) => {
+    await axios.delete(`http://localhost:8080/employee/${id}`);
+    loadEmployees();
   };
 
   return (
     <section>
       <nav class="navbar navbar-expand-lg " >
       <Link className="navbar-brand" to="/">
-            Bumble Bee  </Link>
+            Bumble Bee </Link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -55,45 +54,45 @@ export default function Home() {
     </ul>
   </div>
 </nav>
-    <div className="container" style={{marginTop: "70px"}}>
+    <div className="container">
       <div className="py-4">
         <table className="table table-striped table-dark">
           <thead>
             <tr>
-              <th scope="col">S.N</th>
+              <th scope="col">ID</th>
               <th scope="col">Name</th>
-              <th scope="col">Age</th>
+              <th scope="col">Mobile</th>
               <th scope="col">Address</th>
               <th scope="col">Email</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            {customers.map((customer, index) => (
+            {employees.map((employee, index) => (
               <tr>
                 <th scope="row" key={index}>
                   {index + 1}
                 </th>
-                <td>{customer.name}</td>
-                <td>{customer.age}</td>
-                <td>{customer.address}</td>
-                <td>{customer.email}</td>
+                <td>{employee.name}</td>
+                <td>{employee.mobile}</td>
+                <td>{employee.address}</td>
+                <td>{employee.email}</td>
                 <td>
                   <Link
                     className="btn btn-primary mx-2"
-                    to={`/viewcustomer/${customer.id}`}
+                    to={`/employee/viewemployee/${employee.id}`}
                   >
                     View
                   </Link>
                   <Link
                     className="btn btn-success mx-2"
-                    to={`/editcustomer/${customer.id}`}
+                    to={`/employee/editemployee/${employee.id}`}
                   >
                     Edit
                   </Link>
                   <button
                     className="btn btn-danger mx-2"
-                    onClick={() => deleteCustomer(customer.id)}
+                    onClick={() => deleteEmployee(employee.id)}
                   >
                     Delete
                   </button>
@@ -105,6 +104,5 @@ export default function Home() {
       </div>
     </div>
     </section>
-     
   );
 }

@@ -1,32 +1,43 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-export default function AddProduct() {
+export default function EditEmployee() {
   let navigate = useNavigate();
 
-  const [product, setProduct] = useState({
+  const { id } = useParams();
+
+  const [employee, setEmployee] = useState({
     name: "",
-    brand: "",
-    country: "",
-    price: "",
+    mobile: "",
+    address: "",
+    email: "",
   });
 
-  const { name, brand, country, price } = product;
+  const { name, mobile, address, email } = employee;
 
   const onInputChange = (e) => {
-    setProduct({ ...product, [e.target.name]: e.target.value });
+    setEmployee({ ...employee, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    loadEmployee();
+  }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/product", product);
-    navigate("/product");
+    await axios.put(`http://localhost:8080/employee/${id}`, employee);
+    navigate("/employee");
+  };
+
+  const loadEmployee = async () => {
+    const result = await axios.get(`http://localhost:8080/employee/${id}`);
+    setEmployee(result.data);
   };
 
   return (
     <section>
-      <nav class="navbar navbar-expand-lg " >
+    <nav class="navbar navbar-expand-lg " >
       <Link className="navbar-brand" to="/">
             Bumble Bee </Link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,67 +70,66 @@ export default function AddProduct() {
 </nav>
     <div className="container" style={{marginTop:"90px"}}>
       <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4">Add Product</h2>
+        <div className="col-md-5 offset-md-3 border rounded p-4 mt-2 shadow">
+          <h2 className="text-center m-4">Update Employee</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
-            <div className="mb-4">
+            <div className="mb-3">
               <label htmlFor="Name" className="form-label">
                 Name
               </label>
               <input
                 type={"text"}
-                className="form-control" required
-                placeholder="Enter Product name"
+                className="form-control"
+                placeholder="Enter Employee name" 
                 name="name"
                 value={name}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="brand" className="form-label">
-                Brand
+              <label htmlFor="mobile" className="form-label">
+                Mobile
               </label>
               <input
                 type={"text"}
-                className="form-control" required
-                placeholder="Enter product brand"
-                name="brand"
-                value={brand}
+                className="form-control"
+                placeholder="Enter Mobile" maxLength={10}
+                name="mobile"
+                value={mobile}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="country" className="form-label">
-                Country
+              <label htmlFor="address" className="form-label">
+                Address
               </label>
               <input
                 type={"text"}
-                className="form-control" required
+                className="form-control"
                 placeholder="Enter country"
-                name="country"
-                value={country}
+                name="address"
+                value={address}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="price" className="form-label">
-                Price
+              <label htmlFor="email" className="form-label">
+                Email
               </label>
               <input
-                type={"text"}
-                className="form-control" required
-                placeholder="Enter price"
-                name="price"
-                value={price}
+                type={"email"}
+                className="form-control"
+                placeholder="Enter email"
+                name="email"
+                value={email}
                 onChange={(e) => onInputChange(e)}
               />
             </div>
-            
             <button type="submit" className="btn btn-primary">
-              Submit
+              Update
             </button>
-            <Link className="btn btn-danger mx-2" to="/product">
+            <Link className="btn btn-danger mx-2" to="/employee">
               Cancel
             </Link>
           </form>
