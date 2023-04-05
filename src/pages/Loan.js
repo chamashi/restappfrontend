@@ -3,23 +3,18 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
 
-export default function Home() {
-  const [customers, setCustomers] = useState([]);
+export default function Loan() {
+  const [loans, setLoans] = useState([]);
 
   const { id } = useParams();
 
   useEffect(() => {
-    loadCustomers();
+    loadLoans();
   }, []);
 
-  const loadCustomers = async () => {
-    const result = await axios.get("http://localhost:8080/customers");
-    setCustomers(result.data);
-  };
-
-  const deleteCustomer = async (id) => {
-    await axios.delete(`http://localhost:8080/customer/${id}`);
-    loadCustomers();
+  const loadLoans = async () => {
+    const result = await axios.get("http://localhost:8080/loans");
+    setLoans(result.data);
   };
 
   return (
@@ -66,42 +61,30 @@ export default function Home() {
           <thead>
             <tr>
               <th scope="col">S.N</th>
-              <th scope="col">Name</th>
-              <th scope="col">Age</th>
-              <th scope="col">Address</th>
-              <th scope="col">Email</th>
+              <th scope="col">Customer ID</th>
+              <th scope="col">Product</th>
+              <th scope="col">Total loan</th>
+              <th scope="col">Installments</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-            {customers.map((customer, index) => (
+            {loans.map((loan, index) => (
               <tr>
                 <th scope="row" key={index}>
                   {index + 1}
                 </th>
-                <td>{customer.name}</td>
-                <td>{customer.age}</td>
-                <td>{customer.address}</td>
-                <td>{customer.email}</td>
+                <td>{loan.customerid}</td>
+                <td>{loan.productname}</td>
+                <td>{loan.totaloan}</td>
+                <td>{loan.installments}</td>
                 <td>
                   <Link
                     className="btn btn-primary mx-2"
-                    to={`/viewcustomer/${customer.id}`}
+                    to={`/viewloan/${loan.id}`}
                   >
-                    View
+                    View more
                   </Link>
-                  <Link
-                    className="btn btn-success mx-2"
-                    to={`/editcustomer/${customer.id}`}
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    className="btn btn-danger mx-2"
-                    onClick={() => deleteCustomer(customer.id)}
-                  >
-                    Delete
-                  </button>
                 </td>
               </tr>
             ))}
