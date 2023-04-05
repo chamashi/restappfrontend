@@ -48,7 +48,7 @@ export default function Home() {
           </Link>
       </li>
       <li class="nav-item">
-      <Link className="btn btn-dark" to="/loan/loandetails" style={{marginRight:"10px"}}>
+      <Link className="btn btn-dark" to="/loan" style={{marginRight:"10px"}}>
             Loan Details
           </Link>
       </li>

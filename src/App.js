@@ -16,7 +16,7 @@ import EditEmployee from "./employee/EditEmployee";
 import Login from "./pages/Login";
 import ViewEmployee from "./employee/ViewEmployee";
 import Loan from "./pages/Loan";
-import ViewLoan from "./pages/ViewLoan";
+import ViewLoan from "./loan/ViewLoan";
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
           <Route exact path="/employee/addemployee" element={<AddEmployee/>} />
           <Route exact path="/employee/editemployee/:id" element={<EditEmployee />} />
           <Route exact path="/employee/viewemployee/:id" element={<ViewEmployee />} />
-          <Route exact path="/loan/loandetails" element={<Loan />} />
+          <Route exact path="/loan" element={<Loan />} />
           <Route exact path="loan/viewloan/:id" element={<ViewLoan />} />
         </Routes>
       </Router>

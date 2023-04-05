@@ -61,6 +61,11 @@ export default function EditCustomer() {
           </Link>
       </li>
       <li class="nav-item">
+      <Link className="btn btn-dark" to="/loan" style={{marginRight:"10px"}}>
+            Loan Details
+          </Link>
+      </li>
+      <li class="nav-item">
       <Link className="btn btn-dark" to="/" style={{marginRight:"10px"}}>
             Log out
           </Link>

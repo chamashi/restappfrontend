@@ -47,6 +47,11 @@ export default function ViewCustomer() {
           </Link>
       </li>
       <li class="nav-item">
+      <Link className="btn btn-dark" to="/loan" style={{marginRight:"10px"}}>
+            Loan Details
+          </Link>
+      </li>
+      <li class="nav-item">
       <Link className="btn btn-dark" to="/" style={{marginRight:"10px"}}>
             Log out
           </Link>
@@ -61,7 +66,6 @@ export default function ViewCustomer() {
 
           <div className="card">
             <div className="card-header">
-              Details of customer id : {customer.id}
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
                   <b>Name:</b>

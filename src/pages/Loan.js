@@ -43,7 +43,7 @@ export default function Loan() {
           </Link>
       </li>
       <li class="nav-item">
-      <Link className="btn btn-dark" to="/loan/loandetails" style={{marginRight:"10px"}}>
+      <Link className="btn btn-dark" to="/loan" style={{marginRight:"10px"}}>
             Loan Details
           </Link>
       </li>
@@ -64,8 +64,10 @@ export default function Loan() {
               <th scope="col">Customer ID</th>
               <th scope="col">Product</th>
               <th scope="col">Total loan</th>
-              <th scope="col">Installments</th>
-              <th scope="col">Action</th>
+              <th scope="col"> Paid Installments</th>
+              <th scope="col"> Balance</th>
+              <th scope="col"> Paid </th>
+              <th scope="col">Date</th>
             </tr>
           </thead>
           <tbody>
@@ -77,15 +79,10 @@ export default function Loan() {
                 <td>{loan.customerid}</td>
                 <td>{loan.productname}</td>
                 <td>{loan.totaloan}</td>
-                <td>{loan.installments}</td>
-                <td>
-                  <Link
-                    className="btn btn-primary mx-2"
-                    to={`/viewloan/${loan.id}`}
-                  >
-                    View more
-                  </Link>
-                </td>
+                <td>{loan.paidinstallments}</td>
+                <td>{loan.loanbalance}</td>
+                <td>{loan.paidamount}</td>
+                <td>{loan.loandate}</td>
               </tr>
             ))}
           </tbody>

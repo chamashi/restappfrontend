@@ -4,15 +4,14 @@ import { Link, useParams } from "react-router-dom";
 
 export default function ViewLoan() {
   const [loan, setLoan] = useState({
-    customerid: "",
+    customerid:"",
     productname: "",
     totalloan: "",
     installments: "",
     paidinstallments: "",
-    loanbalance: "",
-    paidamount: "",
-    loandate: "",
-
+    loanbalance:"",
+	paidamount: "",
+	loandate: "",
   });
 
   const { id } = useParams();
@@ -52,7 +51,7 @@ export default function ViewLoan() {
           </Link>
       </li>
       <li class="nav-item">
-      <Link className="btn btn-dark" to="/loan/loandetails" style={{marginRight:"10px"}}>
+      <Link className="btn btn-dark" to="/loan" style={{marginRight:"10px"}}>
             Loan Details
           </Link>
       </li>
@@ -78,11 +77,11 @@ export default function ViewLoan() {
                   {loan.customerid}
                 </li>
                 <li className="list-group-item">
-                  <b>Product Name:</b>
+                  <b>Product name:</b>
                   {loan.productname}
                 </li>
                 <li className="list-group-item">
-                  <b>Total Loan:</b>
+                  <b>Total loan:</b>
                   {loan.totalloan}
                 </li>
                 <li className="list-group-item">
@@ -90,15 +89,15 @@ export default function ViewLoan() {
                   {loan.installments}
                 </li>
                 <li className="list-group-item">
-                  <b> Paid Installments:</b>
+                  <b>Paid Installments:</b>
                   {loan.paidinstallments}
                 </li>
                 <li className="list-group-item">
-                  <b>Loan balance:</b>
+                  <b>Loan Balance:</b>
                   {loan.loanbalance}
                 </li>
                 <li className="list-group-item">
-                  <b>Paid Ammount:</b>
+                  <b>Paid amount:</b>
                   {loan.paidamount}
                 </li>
                 <li className="list-group-item">
@@ -108,7 +107,7 @@ export default function ViewLoan() {
               </ul>
             </div>
           </div>
-          <Link className="btn btn-primary my-2" to={"/loandetails"}>
+          <Link className="btn btn-primary my-2" to={"/loan"}>
             Back to Home
           </Link>
         </div>
